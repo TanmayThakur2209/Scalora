@@ -1,7 +1,47 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#bdbdbd" class="bi bi-clouds-fill" stroke="#bdbdbd" stroke-width="0.00016">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.128"/>
-<g id="SVGRepo_iconCarrier"> <path d="M11.473 9a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 14h8.5a2.5 2.5 0 1 0-.027-5z"/> <path d="M14.544 9.772a3.506 3.506 0 0 0-2.225-1.676 5.502 5.502 0 0 0-6.337-4.002 4.002 4.002 0 0 1 7.392.91 2.5 2.5 0 0 1 1.17 4.769z"/> </g>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="300"
+  height="300"
+  viewBox="0 0 300 300"
+>
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1f8f"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect
+    width="300"
+    height="300"
+    rx="60"
+    fill="url(#bgGradient)"
+  />
+
+  <!-- Centered Cloud Group -->
+  <g transform="translate(23,12)">
+    
+    <!-- Main Cloud -->
+    <path
+      d="M183.568 144
+         a72 72 0 0 0-139.52-15.84
+         A48 48 0 0 0 48 224
+         h136
+         a40 40 0 1 0-.432-80z"
+      fill="white"
+    />
+
+    <!-- Back Cloud Layer -->
+    <path
+      d="M232.704 156.352
+         a56.096 56.096 0 0 0-35.6-26.816
+         a88.032 88.032 0 0 0-101.392-64.032
+         a64.032 64.032 0 0 1 118.272 14.56
+         a40 40 0 0 1 18.72 76.304z"
+      fill="white"
+    />
+
+  </g>
+</svg>
