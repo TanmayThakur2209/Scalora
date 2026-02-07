@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "http://127.0.0.1:8000";
+const API = "https://scalora.onrender.com/";
 
 type Provider = "AWS" | "GCP";
 

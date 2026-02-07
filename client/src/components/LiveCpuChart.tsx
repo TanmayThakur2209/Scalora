@@ -57,7 +57,7 @@ export default function LiveCpuChart() {
   useEffect(() => {
     const interval = setInterval(() => {
       axios
-        .get<LiveCpuResponse>("http://127.0.0.1:8000/live_cpu")
+        .get<LiveCpuResponse>("https://scalora.onrender.com/live_cpu")
         .then((res) => {
           const history = res.data.history || [];
           const predicted = res.data.predicted_cpu ?? 0;
