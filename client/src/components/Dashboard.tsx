@@ -92,7 +92,6 @@ const Icons = {
   ),
 };
 
-// Feature data
 const features = [
   {
     icon: Icons.Robot,
@@ -126,13 +125,6 @@ const features = [
   }
 ];
 
-// Stats data
-const stats = [
-  { value: "10M+", label: "Data Points Analyzed" },
-  { value: "99.9%", label: "Uptime Guarantee" },
-  { value: "500+", label: "Enterprise Clients" },
-  { value: "24/7", label: "Expert Support" }
-];
 
 const Dashboard: React.FC = () => {
   return (

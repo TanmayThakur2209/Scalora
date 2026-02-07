@@ -108,7 +108,6 @@ def analyze_gcp(data: AnalyzeRequest):
     }
 
 
-# Active pricing config (default fallback)
 current_pricing = {
     "provider": "local",
     "instance_type": "default",
@@ -117,13 +116,10 @@ current_pricing = {
 }
 
 
-# Per-instance state
 instance_state = {}
 
 
 
-
-# Load model and scaler
 model = load_model("models/cpu_forecast_model.keras")
 scaler = joblib.load("models/scaler.pkl")
 
@@ -225,7 +221,6 @@ def get_live_cpu():
 
     cpu_history.append(data)
 
-    # keep only last 30 points
     if len(cpu_history) > 30:
         cpu_history.pop(0)
 
@@ -236,26 +231,21 @@ def get_live_cpu():
     if len(cpu_history) >= 24:
         cpu_values = [x["cpu_usage"] for x in cpu_history[-24:]]
 
-        # scale input
         cpu_scaled = scaler.transform(np.array(cpu_values).reshape(-1,1))
 
-        # reshape for LSTM (1, 24, 1)
         seq = cpu_scaled.reshape(1, 24, 1)
 
-        # predict
         pred_scaled = model.predict(seq)[0][0]
 
-        # inverse scale
         predicted = float(scaler.inverse_transform([[pred_scaled]])[0][0])
 
-        # decision logic
-        if predicted > 0.6:
+        if predicted > 0.7:
             decision = "SCALE UP"
         elif predicted < 0.3:
             decision = "SCALE DOWN"
         else:
             decision = "NO CHANGE"
-    instance_id = "local-machine"  # for demo; later this can be real instance id
+    instance_id = "random" 
     savings_info = update_savings(instance_id, decision)
 
     return {
