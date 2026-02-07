@@ -28,7 +28,7 @@ df = df.replace({np.nan: None})
 
 @app.get("/")
 def root():
-    return {"message": "Cloud Cost Optimizer API is running"}
+    return {"message": "Scalora API is running"}
 
 @app.get("/data")
 def get_data(limit: int = 50, offset: int = 0):
