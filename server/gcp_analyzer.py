@@ -26,4 +26,4 @@ def fetch_gcp_cpu(project_id: str):
         for point in series.points:
             cpu_values.append(point.value.double_value)
 
-    return cpu_values[:24]  # return last 24 datapoints
+    return cpu_values[:24] 
