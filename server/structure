@@ -1,0 +1,55 @@
+CloudOptAI/
+│
+├── data/
+│   ├── raw/
+│   │   └── borg_traces_data.csv
+│   │
+│   ├── processed/
+│   │   ├── cloud_hourly_usage.csv
+│   │   └── lstm_sequences.npz
+│   │
+│   └── samples/
+│       └── small_sample.csv
+│
+├── notebooks/
+│   ├── data_exploration.ipynb
+│   └── model_experiments.ipynb
+│
+├── src/
+│   ├── preprocessing/
+│   │   ├── __init__.py
+│   │   ├── time_processing.py
+│   │   ├── resource_parsing.py
+│   │   └── hourly_aggregation.py
+│   │
+│   ├── features/
+│   │   ├── __init__.py
+│   │   └── feature_engineering.py
+│   │
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── isolation_forest.py
+│   │   ├── lstm_forecasting.py
+│   │   └── model_utils.py
+│   │
+│   ├── optimization/
+│   │   ├── __init__.py
+│   │   └── cost_optimizer.py
+│   │
+│   ├── visualization/
+│   │   ├── __init__.py
+│   │   └── plots.py
+│   │
+│   └── config.py
+│
+├── dashboard/
+│   └── app.py
+│
+├── scripts/
+│   ├── run_preprocessing.py
+│   ├── train_models.py
+│   └── run_pipeline.py
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
