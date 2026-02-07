@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const API = "https://scalora.onrender.com/";
+const API = "https://scalora.onrender.com";
 
 export default function GcpAnalyzer() {
   const [projectId, setProjectId] = useState("");
