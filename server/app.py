@@ -12,6 +12,9 @@ from cost_engine import calculate_savings
 import psutil
 from datetime import datetime
 from pricing_presets import PRICING_PRESETS
+from fastapi import UploadFile, File
+import io
+from sklearn.ensemble import IsolationForest
 
 app=FastAPI()
 
@@ -255,4 +258,46 @@ def get_live_cpu():
         "total_savings": savings_info["total_savings"],
         "scaled_down_seconds": savings_info["scaled_down_seconds"],
         "cost_per_hour": savings_info["cost_per_hour"]
+    }
+
+
+@app.post("/analyze_csv")
+async def analyze_csv(file: UploadFile = File(...)):
+    contents = await file.read()
+    df = pd.read_csv(io.StringIO(contents.decode("utf-8")))
+
+    if "cpu_usage" not in df.columns:
+        return {"error": "CSV must contain 'cpu_usage' column"}
+
+    df = df.dropna().reset_index(drop=True)
+
+    opportunities = []
+    total_savings = 0
+    cost_per_hour = 0.08  # Example instance cost
+    savings_rate = (cost_per_hour * 0.5) / 3600
+
+    for i in range(24, len(df)):
+        window = df["cpu_usage"].iloc[i-24:i].values
+
+        cpu_df = pd.DataFrame(window, columns=["cpu_usage"])
+        cpu_scaled = scaler.transform(cpu_df)
+
+        seq = cpu_scaled.reshape(1, 24, 1)
+        pred_scaled = model.predict(seq)[0][0]
+        predicted = float(scaler.inverse_transform([[pred_scaled]])[0][0])
+
+        if predicted < 0.3:
+            timestamp = df.iloc[i].get("timestamp", i)
+            opportunities.append({
+                "timestamp": timestamp,
+                "predicted_cpu": predicted,
+                "recommendation": "SCALE DOWN"
+            })
+
+            total_savings += savings_rate * 60  # assume 1 min
+
+    return {
+        "historical": df.to_dict(orient="records"),
+        "opportunities": opportunities,
+        "total_estimated_savings": total_savings
     }

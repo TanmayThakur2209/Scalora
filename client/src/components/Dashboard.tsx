@@ -151,9 +151,9 @@ const Dashboard: React.FC = () => {
               <a href="#features" className="text-slate-300 hover:text-white transition-colors duration-200">Features</a>
               <a href="#pricing" className="text-slate-300 hover:text-white transition-colors duration-200">Pricing</a>
               <a href="#about" className="text-slate-300 hover:text-white transition-colors duration-200">About</a>
-              <button className="px-6 py-2 bg-linear-to-r from-blue-700 to-blue-900 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500 transition-all duration-300 transform hover:scale-105">
+              <Link to="/AnalyzeCSV" className="px-6 py-2 bg-linear-to-r from-blue-700 to-blue-900 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500 transition-all duration-300 transform hover:scale-105">
                 Get Started
-              </button>
+              </Link>
             </div>
           </div>
         </nav>
